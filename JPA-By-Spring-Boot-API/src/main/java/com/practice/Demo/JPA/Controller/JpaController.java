@@ -56,7 +56,7 @@ public class JpaController {
 	@DeleteMapping("deleteDetails/{id}")
 	public String deleteRecord(@PathVariable int id) {
 		service.deleteRecord(id);
-		return "user with ID " +id +"deleted Successfully";
+		return "user with ID " +id +" deleted Successfully";
 	}
 	
 	@PutMapping("updateDetails/{id}")
