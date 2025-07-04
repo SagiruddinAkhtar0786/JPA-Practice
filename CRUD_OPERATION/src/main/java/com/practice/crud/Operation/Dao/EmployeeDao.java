@@ -37,7 +37,7 @@ public class EmployeeDao {
 			st = con.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 			
-			while(rs != null) {
+			while(rs.next()) {
 				Employee emp = new Employee();
                 emp.setId(rs.getInt("id"));
                 emp.setName(rs.getString("name"));
