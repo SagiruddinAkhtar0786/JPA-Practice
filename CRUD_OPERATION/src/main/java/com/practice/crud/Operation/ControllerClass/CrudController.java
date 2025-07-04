@@ -2,6 +2,7 @@ package com.practice.crud.Operation.ControllerClass;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/crud")
 public class CrudController {
 
-	
+	@GetMapping
 	public ResponseEntity<String> fetchData(){
+		System.out.println("hit");
 		return new ResponseEntity<>("data fetiching ",HttpStatus.OK);
 	}
 }
