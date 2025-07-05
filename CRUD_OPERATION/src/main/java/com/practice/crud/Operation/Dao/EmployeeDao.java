@@ -24,6 +24,7 @@ public class EmployeeDao {
 	
 	Connection con =null;
 	PreparedStatement st = null;
+	ResultSet rs= null;
 	
 	
 	public List<Employee> getEmployee() throws SQLException {
@@ -35,7 +36,7 @@ public class EmployeeDao {
 		try {
 			con = dataSource.getConnection();
 			st = con.prepareStatement(sql);
-			ResultSet rs = st.executeQuery();
+			rs = st.executeQuery();
 			
 			while(rs.next()) {
 				Employee emp = new Employee();
@@ -56,7 +57,7 @@ public class EmployeeDao {
 		return employees;
 	}
 	
-	public void saveEmployee(Employee emp) throws SQLException {
+	public Employee saveEmployee(Employee emp) throws SQLException {
 		
 		String sqlQ = "INSERT INTO Employee(id,name,email) VALUES(?,?,?)";
 		try {
@@ -85,8 +86,28 @@ public class EmployeeDao {
 
 	
 	
-	public Employee getEmployeeById() {
+	public Employee getEmployeeById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String sql = "Select * from EMPLOYEE where id=?";
+		Employee emp = null;
+		
+		try(Connection con =dataSource.getConnection();
+				PreparedStatement st = con.prepareStatement(sql)
+		){
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+			
+			 if (rs.next()) {
+	                emp = new Employee();
+	                emp.setId(rs.getInt("id"));
+	                emp.setName(rs.getString("name"));
+	                emp.setEmail(rs.getString("email"));
+	            }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	
+		return emp;
 	}
 }

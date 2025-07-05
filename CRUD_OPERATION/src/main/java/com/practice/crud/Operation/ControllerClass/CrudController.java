@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,13 +31,29 @@ public class CrudController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> createData(@RequestBody Employee emp) throws SQLException{
+	public ResponseEntity<Employee> createData(@RequestBody Employee emp) throws SQLException{
 		
 	//	emp.setId(0);
 		System.out.println("hitting");
 		
-		employeeDAO.saveEmployee(emp);
-		return new ResponseEntity<>("reources saved Successfully ",HttpStatus.OK);
+		Employee emp = employeeDAO.saveEmployee(emp);
+		return new ResponseEntity<>(emp,HttpStatus.OK);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getEmployeeById(@PathVariable int id){
+		
+		System.out.println("id >> "+id);
+		Employee emp = employeeDAO.getEmployeeById(id);
+		
+		if(emp != null) {
+			
+			return new ResponseEntity<>(emp,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("resource with given id Not Found ",HttpStatus.NOT_FOUND);
+
+		}
+		
 	}
 	
 }
