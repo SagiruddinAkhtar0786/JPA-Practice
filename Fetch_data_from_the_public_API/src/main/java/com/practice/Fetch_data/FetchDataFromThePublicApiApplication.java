@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FetchDataFromThePublicApiApplication {
 
 	public static void main(String[] args) {
+		System.out.println("start");
 		SpringApplication.run(FetchDataFromThePublicApiApplication.class, args);
 	}
 
