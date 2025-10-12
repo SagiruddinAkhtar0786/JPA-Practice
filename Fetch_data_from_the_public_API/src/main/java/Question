@@ -1,0 +1,33 @@
+Create an API that fetches data from the public API at https://jsonplaceholder.typicode.com/posts, 
+which returns an array of  objects.
+ For each object, add a new key called serialNumber with an incremental value starting from 1.
+ The API should support pagination, where
+ the results are based on query parameters (page and perpage).
+The API response should include:
+The list of posts with the added serialNumber field.
+The current page number.
+The perpage (items per page).
+The totalCount (total number of posts available).
+Example API response:
+{
+    "data": [
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+            "serialNumber": 1
+        },
+        {
+            "userId": 1,
+            "id": 2,
+            "title": "qui est esse",
+            "body": "test",
+            "serialNumber": 2
+        }
+    ],
+    "page": 1,
+    "perpage": 10,
+    "totalCount": 100
+}
+Once the data is modified (with the serialNumber added), it should also be saved to a database for future use.

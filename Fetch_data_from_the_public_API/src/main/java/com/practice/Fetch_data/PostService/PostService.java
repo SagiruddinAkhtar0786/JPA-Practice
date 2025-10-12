@@ -34,7 +34,7 @@ public class PostService {
 		System.out.println("total Count :: "+totalCount);
 		if(totalCount == 0) {
 			RestTemplate restTemplate = new RestTemplate();	
-			Post[] posts = restTemplate.getForObject(API_URL,Post[].class);// means
+			Post[] posts = restTemplate.getForObject(API_URL,Post[].class);// means  This tells Spring what type of Java object the JSON response should be converted (mapped) into.
 			System.out.println("Posts :: "+Arrays.toString(posts));
 			
 			
