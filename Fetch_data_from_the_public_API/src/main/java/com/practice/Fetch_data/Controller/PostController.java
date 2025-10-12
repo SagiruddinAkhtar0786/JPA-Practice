@@ -23,13 +23,22 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
-	 @GetMapping("/posts")
+	/* @GetMapping("/posts")
 	public Map<String,Object> getPosts(@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "10") int perPage){
 		
 		//return postService.getPaginatedPosts(page,perPage);
 		return postService.getPaginatedPosts(page, perPage);
-	}
+	}*/
+	 
+	 @GetMapping("/posts")
+	 public Map<String, Object> getPosts(
+	         @RequestParam int page,
+	         @RequestParam int perPage) {
+
+	     return postService.getPaginatedPosts(page, perPage);
+	 }
+
 	
 						
 }
