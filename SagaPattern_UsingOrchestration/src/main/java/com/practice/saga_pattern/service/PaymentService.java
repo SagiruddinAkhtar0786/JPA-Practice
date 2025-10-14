@@ -1,5 +1,12 @@
 package com.practice.saga_pattern.service;
 
+import org.springframework.stereotype.Service;
+
+import com.practice.saga_pattern.entities.Account;
+import com.practice.saga_pattern.repository.AccountRepository;
+
+import jakarta.transaction.Transactional;
+
 @Service
 public class PaymentService {
     private final AccountRepository accountRepo;

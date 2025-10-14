@@ -3,6 +3,7 @@ package com.practice.saga_pattern.service;
 import org.springframework.stereotype.Service;
 
 import com.practice.saga_pattern.entities.Product;
+import com.practice.saga_pattern.repository.ProductRepository;
 
 import jakarta.transaction.Transactional;
 

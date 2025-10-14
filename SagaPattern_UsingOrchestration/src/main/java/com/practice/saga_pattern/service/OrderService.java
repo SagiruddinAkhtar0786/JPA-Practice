@@ -2,16 +2,21 @@ package com.practice.saga_pattern.service;
 
 import org.springframework.stereotype.Service;
 
-import jakarta.persistence.criteria.Order;
+import com.practice.saga_pattern.entities.Order;
+import com.practice.saga_pattern.repository.OrderRepository;
+
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepo;
 
-    public OrderService(OrderRepository orderRepo) {
-        this.orderRepo = orderRepo;
-    }
+	/*
+	 * public OrderService(OrderRepository orderRepo) { this.orderRepo = orderRepo;
+	 * }
+	 */
 
     @Transactional
     public Long createOrder(Long userId, Double amount) {
@@ -19,6 +24,7 @@ public class OrderService {
         order.setUserId(userId);
         order.setAmount(amount);
         orderRepo.save(order);
+       // orderRepo.save(null);
         System.out.println("✅ Order created");
         return order.getId();
     }
@@ -29,4 +35,3 @@ public class OrderService {
         System.out.println("↩️ Order cancelled (compensation)");
     }
 }
-

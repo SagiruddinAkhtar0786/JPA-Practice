@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.practice.saga_pattern.entities.repository;
+package com.practice.saga_pattern.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
